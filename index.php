@@ -9,7 +9,7 @@
 
     <section  class="login">
 
-        <form action="/login.php" method="post">
+        <form action="index.php" method="post">
            <legend>Login</legend>
 
             <div class="container">
@@ -28,3 +28,40 @@
     </section>
 </body>
 </html>
+
+
+<?php 
+include 'dp.php';
+session_start() ;
+if ($_SERVER['REQUEST_METHOD']=='POST') {
+  if (isset ($_POST['uname']) && isset ($_POST['psw'])) {
+         $username = @$_POST['uname'] ;
+         $password = @$_POST['psw'] ;
+         try {
+
+         
+          $sql = "select id , member_id from e_accounts where username = $username && password = $password" ;
+          $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          echo ("ok");
+
+          $row = $result->fetch_assoc() ;
+          $_SESSION ['userID'] = $row['id'];
+          $_SESSION ['member_id'] = $row ['member_id'] ;
+          header("Location: home.php");
+
+        }
+        else {
+          die ("alert error user name or password 1") ;
+        }
+      }
+      catch (mysqli_sql_exception ) {
+            die ("alert error user name or password 2") ;
+      }
+         
+      
+         
+  }
+}
+
+?>
