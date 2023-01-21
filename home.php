@@ -1,39 +1,18 @@
+
+<?php 
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <style>
-header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 1em;
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav {
-    background-color: #f1f1f1;
-    padding: 0.5em;
-    text-align: center;
-}
-
-nav a {
-    color: black;
-    text-decoration: none;
-    padding: 0.5em 1em;
-    display: inline-block;
-}
-
-nav a:hover {
-    background-color: #555;
-    color: white;
-}
-
-        </style>
+   <link rel = "stylesheet" href="CSS/home.css" >
 </head>
 <body>
     <header>
@@ -49,7 +28,27 @@ nav a:hover {
         <a href="#">view late tasks </a>
     </nav>
 
+    <?php 
+        include 'sqlStatment.php';
+
+    echo "<table>";
+    echo "<tr>   <th>Title</th>   <th>description</th>  <th>start_date</th>  <th>end_date</th>  <th>priority</th>  <th>assigned_to</th>  <th>assigned_by</th>  </tr>";
+    $tasks = SqlStatments:: getMyDailyTasks() ;
+
+        foreach ($tasks as $task) {
+        echo "<tr>";
+        echo "<td>" . $task['title'] . "</td>";
+        echo "<td>" . $task['description'] . "</td>";
+        echo "<td>" . $task['start_date'] . "</td>";
+        echo "<td>" . $task['end_date'] . "</td>";
+        echo "<td>" . $task['priority'] . "</td>";
+        echo "<td>" . $task['assigned_to'] . "</td>";
+        echo "<td>" . $task['assigned_by'] . "</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
     
+    ?> 
 
 
 
@@ -58,6 +57,5 @@ nav a:hover {
 
 <?php 
 
-session_start() ; 
 print ("you id = " . $_SESSION['userID'] . "  and memeber id is : " . $_SESSION ['member_id']);
 ?>

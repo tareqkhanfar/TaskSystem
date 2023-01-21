@@ -1,7 +1,13 @@
 
+<?php 
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 
+ ?>
 <?php
-    session_start () ;
+  
 
 class SqlStatments {
     public static function CreateNewMember($id, $name, $nationality,  $address, $email, $phone, $workExp, $qua, $imgContent, $cvContent)
@@ -72,14 +78,14 @@ mysqli_close($conn);
 
 public static function getMyDailyTasks () {
     include 'dp.php' ;
-    $query = "select * from task where assigned_to = $_SESSION ['member_id'] " ;
+    $query = "select * from task where assigned_to =".$_SESSION['member_id'] ;
     if ($conn ->connect_error) {
         // display an error message
         die ("error" . $conn->error) ;
   }
   else {
       $result = mysqli_query ($conn , $query) ;
-    
+
       $tasks = array() ;
       while ($row = mysqli_fetch_assoc($result)) {
         $tasks[] = $row ;
@@ -87,5 +93,7 @@ public static function getMyDailyTasks () {
   }
   return $tasks ;
 }
+
+
 }
 ?>
