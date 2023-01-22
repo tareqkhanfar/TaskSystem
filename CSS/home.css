@@ -1,44 +1,23 @@
 header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 1em;
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px;
 }
 
-header h1 {
+#logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#name h1 {
+    font-size: 2em;
     margin: 0;
 }
 
-nav {
-    background-color: #f1f1f1;
-    padding: 0.5em;
-    text-align: center;
-}
-
-nav a {
-    color: black;
+#header-links a {
+    margin-left: 10px;
     text-decoration: none;
-    padding: 0.5em 1em;
-    display: inline-block;
+    color: #000;
 }
-
-nav a:hover {
-    background-color: #555;
-    color: white;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-

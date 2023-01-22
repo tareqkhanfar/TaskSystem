@@ -65,6 +65,8 @@
             echo "<option value='" . $member['id'] . "'>" . $member['name'] . "</option>";
         }
   ?>
+    </select>
+
   <input type = "submit" value = "Update" >
 
     </form >

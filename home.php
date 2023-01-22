@@ -18,11 +18,21 @@
 </head>
 <body>
     <header>
-
-    <h1> Task Managment System</h1>
+    <div id="logo">
+    </div>
+    <div id="name">
+      <h1>Task Managment System</h1>
+    </div>
+    <div id="header-links">
+      <a href="about-us.php">About Us</a>
+      <a href="contact-us.php">Contact Us</a>
+      <a href="logout.php">Log Out</a>
+    </div>
     </header>
     <nav> 
         <a href="./home.php">Home </a>
+        <a href="./Search/search.php">Search </a>
+
         <a href="./Task/update/update_task.php">View submitted tasks </a>
         <a href="./Task/addNewTask.php">Add New Task </a>
         <a href="./Task/ViewLateTask/viewLateTask.php">view late tasks </a>

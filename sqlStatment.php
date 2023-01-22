@@ -263,7 +263,26 @@ public static function setTaskToLate() {
       
 }
 
+public static function searchEngin ($startDate , $EndDate , $MemberID , $priority , $status) {
+    include 'dp.php' ;
+    $query = "select title, description, start_date, end_date, priority, assigned_to,assigned_by, member.name, status 
 
+    from task join member_details member on (member.id = $MemberID) and (member.id = assigned_to) 
+      where start_date = '$startDate' and end_date='$EndDate' and priority = $priority and status = '$status'" ;
+    if ($conn ->connect_error) {
+        // display an error message
+        die ("error" . $conn->error) ;
+  }
+  else {
+      $result = mysqli_query ($conn , $query) ;
+
+      $tasks = array() ;
+      while ($row = mysqli_fetch_assoc($result)) {
+        $tasks[] = $row ;
+      }
+  }
+  return $tasks ;
+}
 
 
 }
