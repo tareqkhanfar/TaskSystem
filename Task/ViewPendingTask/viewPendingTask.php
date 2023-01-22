@@ -1,7 +1,7 @@
 
 
 
-<form action = "./update.php" method="POST"> 
+<form action = "viewPendingTask.php" method="POST"> 
 <legand> Update The Task</legand>
 <input type = "text" name = "title" placeholder = "Enter the title of task">
 <input type = "submit" value="Active" >
@@ -31,3 +31,13 @@
     echo "</table>";
     
     ?> 
+
+<?php 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['title'])){
+        include_once './../../sqlStatment.php';
+        SqlStatments:: setTaskToActive($_POST['title']) ;
+    } 
+}
+
+?>

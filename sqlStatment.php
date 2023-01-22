@@ -220,6 +220,50 @@ public static function getTaskByTitle ($title) {
   return $tasks ;
 }
 
+public static function setTaskToActive($title) {
+    include 'dp.php' ;
+
+    $sql = "update task set status = 'Active' where title = '$title' " ;
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+      
+      $conn->close();
+
+}
+
+public static function setTaskToFinished($title) {
+    include 'dp.php' ;
+    $sql = "update task set status = 'Finished' where title = '$title' " ;
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+      
+      $conn->close();
+      
+}
+
+public static function setTaskToLate() {
+    include 'dp.php' ;
+    $sql = "update task set status = 'Late' where start_date > end_date" ;
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+      
+      $conn->close();
+      
+}
+
+
 
 
 }
