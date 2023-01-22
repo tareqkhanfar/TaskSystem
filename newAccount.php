@@ -7,31 +7,31 @@
 <hr>
 
     <label for="member_id">Idintify Number</label>
-    <input type="number" name="id">
+    <input type="number" name="id" class="required">
     <br>
     
     <label for="Member_name">name</label>
-    <input type="text" name="Member_name">
+    <input type="text" name="Member_name" class="required">
     <br>
 
     <label for="nationality">nationality</label>
-    <input type="text" name="nationality">
+    <input type="text" name="nationality"  class="required">
     <br>
 
     <label for="member_address">Address</label>
-    <input type="text" name="member_address">
+    <input type="text" name="member_address" class="required">
     <br>
 
     <label for="email">Email</label>
-    <input type="email" name="email">
+    <input type="email" name="email" class="required">
     <br>
 
     <label for="member_phone">Phone</label>
-    <input type="tel" name="member_phone">
+    <input type="tel" name="member_phone" class="required">
     <br>
 
     <label for="workExp">working experience</label>
-    <input type="text" name="workExp">
+    <input type="text" name="workExp" class="required">
     <br>
 
     <label for="qualification">qualification</label>

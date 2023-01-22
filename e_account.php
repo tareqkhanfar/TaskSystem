@@ -56,7 +56,7 @@ if ( $_SERVER['REQUEST_METHOD']=='POST' &&  isset($_POST['username']) && isset (
 
 
      if ($password == $confirmPassword) {
-        $sql = "insert into e_accounts (id , member_id , username , password) values ($userID , $member_id,  $username , $password)" ;
+        $sql = "insert into e_accounts (id , member_id , username , password) values ($userID , $member_id,  '$username' , '$password')" ;
         if ($conn ->query ($sql)==TRUE) {
           echo "successfuly added user" ;
           header("Location: index.php");

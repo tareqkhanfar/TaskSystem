@@ -1,0 +1,7 @@
+.required {
+    background-color: #ffcccc;
+}
+
+.required:focus {
+    background-color: #ffffff;
+}

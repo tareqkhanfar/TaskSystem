@@ -1,3 +1,4 @@
+<?php include './../header.php';?>
 
 
 <?php
@@ -63,6 +64,7 @@ if( isset($_SESSION['userID']) ) {
 </body>
 
 
+<?php include './../footer.php';?>
 
 
 

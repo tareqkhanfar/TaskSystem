@@ -17,47 +17,25 @@
    <link rel = "stylesheet" href="CSS/home.css" >
 </head>
 <body>
-    <header>
-    <div id="logo">
-    </div>
-    <div id="name">
-      <h1>Task Managment System</h1>
-    </div>
-    <div id="header-links">
-      <a href="about-us.php">About Us</a>
-      <a href="contact-us.php">Contact Us</a>
-      <a href="logout.php">Log Out</a>
-    </div>
-    </header>
-    <nav> 
-        <a href="./home.php">Home </a>
-        <a href="./Search/search.php">Search </a>
-
-        <a href="./Task/update/update_task.php">View submitted tasks </a>
-        <a href="./Task/addNewTask.php">Add New Task </a>
-        <a href="./Task/ViewLateTask/viewLateTask.php">view late tasks </a>
-        <a href="./Task/ViewPendingTask/viewPendingTask.php">view pending tasks </a>
-        <a href="./Task/ViewActiveTask/viewActiveTask.php">view Active tasks </a>
-        <a href="./Task/ViewFinishedTask/viewFinishedTask.php">view Finished tasks </a>
-    </nav>
+    
 
     <?php 
-     //   include 'sqlStatment.php';
+
+       include 'header.php';
 
     echo "<table>";
-    echo "<tr>   <th>Title</th>   <th>description</th>  <th>start_date</th>  <th>end_date</th>  <th>priority</th>  <th>assigned_to</th>  <th>assigned_by</th>  <th>Status</th>  </tr>";
+    echo "<tr>   <th>Title</th>   <th>Photo reviver</th>  <th>Photo Sender</th>  <th>priority</th>   </tr>";
     $tasks = SqlStatments:: getMyDailyTasks() ;
 
         foreach ($tasks as $task) {
         echo "<tr>";
         echo "<td>" . $task['title'] . "</td>";
-        echo "<td>" . $task['description'] . "</td>";
-        echo "<td>" . $task['start_date'] . "</td>";
-        echo "<td>" . $task['end_date'] . "</td>";
+        echo "<td><img src='data:image/png;base64," . base64_encode($task['photo']) . "'/></td>";
+        echo "<td><img src='data:image/png;base64," . base64_encode($task['photo']) . "'/></td>";
+        
         echo "<td>" . $task['priority'] . "</td>";
-        echo "<td>" . $task['assigned_to'] . "</td>";
-        echo "<td>" . $task['assigned_by'] . "</td>";
-        echo "<td>" . $task['status'] . "</td>";
+
+        
 
         echo "</tr>";
     }
@@ -73,4 +51,6 @@
 <?php 
 
 print ("you id = " . $_SESSION['userID'] . "  and memeber id is : " . $_SESSION ['member_id']);
+include 'footer.php';
+
 ?>

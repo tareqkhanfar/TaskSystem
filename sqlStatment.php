@@ -10,7 +10,29 @@
 class SqlStatments {
     public static function CreateNewMember($id, $name, $nationality,  $address, $email, $phone, $workExp, $qua, $imgContent, $cvContent)
 {
-    include 'dp.php';
+
+
+  $conn = new PDO("mysql:host=localhost;dbname=tasksystem", "root", "1234");
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$stmt = $conn->prepare("INSERT INTO member_details (`id`, `name`, `nationality`, `address`, `mobile_number`, `email`, `photo`, `qualification`, `experience`, `cv`) 
+                        VALUES (:id, :name, :nationality, :address, :phone, :email, :photo, :qua, :workExp, :cv)");
+$stmt->bindParam(':id', $id);
+$stmt->bindParam(':name', $name);
+$stmt->bindParam(':nationality', $nationality);
+$stmt->bindParam(':address', $address);
+$stmt->bindParam(':phone', $phone);
+$stmt->bindParam(':email', $email);
+$stmt->bindParam(':photo', $imgContent, PDO::PARAM_LOB);
+$stmt->bindParam(':qua', $qua);
+$stmt->bindParam(':workExp', $workExp);
+$stmt->bindParam(':cv', $cvContent, PDO::PARAM_LOB);
+
+
+$stmt->execute();
+
+    //include 'dp.php';
+    /*
     try {
      //   $conn = new mysqli($host, $username, $password, $dbname);
         if ($conn->connect_error) {
@@ -21,25 +43,29 @@ class SqlStatments {
                 `nationality`,
 
                 `address`,
-                `email`,
                 `mobile_number`,
+                `email`,
+                `photo`,
                 `qualification`,
                 `experience`,
-                `photo`,
-                `cv`) VALUES (?,?,?,?,?,?,?,?,? ,?)';
+                `cv`) VALUES (?,?,?,?,?,?,?,?,?,?)';
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "issssissbb", $id, $name,$nationality ,  $address, $email, $phone, $qua, $workExp, $imgContent, $cvContent);
+        mysqli_stmt_bind_param($stmt, "isssisbssb", $id, $name,$nationality ,  $address,  $phone , $email  , $imgContent , $qua, $workExp, $cvContent);
         mysqli_stmt_execute($stmt);
+        if(mysqli_stmt_affected_rows($stmt)>0){
+          echo "File uploaded successfully.";
+      }else{
+          echo "File upload failed, please try again.";
+      }
         mysqli_stmt_close($stmt);
+     
         mysqli_close($conn);
+        */
         $_SESSION['id'] = $id ;
         $_SESSION['name'] = $name ;
 
         header("Location: e_account.php");
 
-    } catch (mysqli_sql_exception $e) {
-        echo $e->getMessage();
-    }
 }
 
 
@@ -95,7 +121,10 @@ mysqli_close($conn);
 
 public static function getMyDailyTasks () {
     include 'dp.php' ;
-    $query = "select * from task where assigned_to =".$_SESSION['member_id'] ;
+    $query = " select title , photo  , priority , assigned_by , status from task join member_details mb on (assigned_to = ". $_SESSION['member_id'] .")
+    and( assigned_to =  mb.id) " ;
+   
+
     if ($conn ->connect_error) {
         // display an error message
         die ("error" . $conn->error) ;

@@ -1,4 +1,5 @@
 
+    <?php include './../../header.php';?>
 
    <link rel = "stylesheet" href="update_table.css" >
 
@@ -34,3 +35,4 @@
     echo "</table>";
     
     ?> 
+    <?php include './../../footer.php';?>

@@ -32,7 +32,7 @@
 
 <?php 
 include 'dp.php';
-session_start() ;
+
 if ($_SERVER['REQUEST_METHOD']=='POST') {
   if (isset ($_POST['uname']) && isset ($_POST['psw'])) {
          $username = @$_POST['uname'] ;
@@ -40,12 +40,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
          try {
 
          
-          $sql = "select id , member_id from e_accounts where username = $username && password = $password" ;
+          $sql = "select id , member_id from e_accounts where username = '$username' && password = '$password'" ;
           $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           echo ("ok");
 
           $row = $result->fetch_assoc() ;
+          session_start() ;
           $_SESSION ['userID'] = $row['id'];
           $_SESSION ['member_id'] = $row ['member_id'] ;
           header("Location: home.php");

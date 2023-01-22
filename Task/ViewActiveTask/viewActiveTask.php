@@ -1,5 +1,5 @@
 
-
+    <?php include './../../header.php';?>
 
 <form action = "viewActiveTask.php" method="POST"> 
 <legand> Update The Task</legand>
@@ -39,3 +39,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
+
+<?php include './../../footer.php';?>

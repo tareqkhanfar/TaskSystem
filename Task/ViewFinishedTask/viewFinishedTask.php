@@ -1,6 +1,8 @@
 
+    <?php include './../../header.php';?>
 
  <?php 
+ 
         include './../../sqlStatment.php';
 
     echo "<table>";
@@ -23,3 +25,4 @@
     echo "</table>";
     
     ?> 
+    <?php include './../../footer.php';?>

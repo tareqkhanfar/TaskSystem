@@ -1,4 +1,5 @@
 
+    <?php include './../../header.php';?>
 
 <?php 
         include_once './../../sqlStatment.php';
@@ -112,3 +113,4 @@ if ($_SERVER ['REQUEST_METHOD']=='POST') {
 
 
 
+<?php include './../../footer.php';?>
