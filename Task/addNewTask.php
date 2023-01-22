@@ -7,6 +7,19 @@
    <link rel="stylesheet" href = "newTask.css"> 
 </head>
 <body>
+<header>
+
+<h1> Task Managment System</h1>
+</header>
+<nav> 
+    <a href="./../home.php">Home </a>
+    <a href="./Task/addNewTask.php">Add New Task </a>
+    <a href="#">view late tasks </a>
+    <a href="#">view pending tasks </a>
+    <a href="#">view Active tasks </a>
+    <a href="#">view late tasks </a>
+</nav>
+
 
 <form action ="./addNewTask_backEnd.php" method = "POST">
   <label for="task-title">Task Title:</label>
