@@ -88,15 +88,63 @@ table {
   background-color: #ffc; /* Change the background color on focus */
 }
 
-.user-info {
+#user-info {
   float: left;
-  width: 25%; /* adjust as needed */  background-color: #f2f2f2;
+  width: 20%;
   padding: 20px;
-  font-size: 14px;
-  font-family: Arial, sans-serif;
+  background-color: #6e3535;
+  text-align: center;
 }
-.user-info img {
+#user-photo {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
 
+.breadcrumb li {
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+
+.breadcrumb li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  transform: translateY(-50%);
+}
+
+.breadcrumb li:last-child::before {
+  display: none;
+}
+
+.breadcrumb li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.CP-Step {
+  background-color: #ddd;
+}
+
+.CR-Step {
+  background-color: #333;
+  color: #fff;
+}
+
+.RM-Step a {
+  color: #aaa;
+}

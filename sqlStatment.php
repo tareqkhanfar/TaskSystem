@@ -121,9 +121,9 @@ mysqli_close($conn);
 
 public static function getMyDailyTasks () {
     include 'dp.php' ;
-    $query = " select title , photo  , priority , assigned_by , status from task join member_details mb on (assigned_to = ". $_SESSION['member_id'] .")
-    and( assigned_to =  mb.id) where start_date =cast((now()) as date)   " ;
    
+    $query = "  select title , mb.photo as photoReciver , m2.photo as photoSender , priority , assigned_by , status from task join member_details mb on (assigned_to = ". $_SESSION['member_id'] .")  join member_details m2 on (m2.id = assigned_by)
+    and( assigned_to =  mb.id) where start_date =cast((now()) as date) ;"; 
 
     if ($conn ->connect_error) {
         // display an error message
@@ -144,6 +144,7 @@ public static function getMyDailyTasks () {
 public static function getMyPendingTask () {
     include 'dp.php' ;
     $query = "select * from task where assigned_to =".$_SESSION['member_id'] ." and status='Pending'";
+    
     if ($conn ->connect_error) {
         // display an error message
         die ("error" . $conn->error) ;
@@ -234,6 +235,7 @@ public static function getMySendingTask () {
 public static function getTaskByTitle ($title) {
     include 'dp.php' ;
     $query = "select * from task where title = '$title'" ;
+    $query = "    select  title, description, start_date, end_date, priority  , status, mb.name as assignedReciver  , m2.name assignedSender ,  mb.photo as photoReciver , m2.photo as photoSender from task  join member_details mb on (mb.id = assigned_to)  join member_details m2 on (m2.id = assigned_by) where title = '$title';" ;
     if ($conn ->connect_error) {
         // display an error message
         die ("error" . $conn->error) ;
@@ -246,7 +248,7 @@ public static function getTaskByTitle ($title) {
         $tasks[] = $row ;
       }
   }
-  return $tasks ;
+  return $tasks[0] ;
 }
 
 public static function setTaskToActive($title) {
@@ -292,12 +294,15 @@ public static function setTaskToLate() {
       
 }
 
-public static function searchEngin ($startDate , $EndDate , $MemberID , $priority , $status) {
+public static function searchEngin ($startDate , $EndDate , $MemberID , $priority , $status , $sortBy) {
     include 'dp.php' ;
-    $query = "select title, description, start_date, end_date, priority, assigned_to,assigned_by, member.name, status 
+   
 
-    from task join member_details member on (member.id = $MemberID) and (member.id = assigned_to) 
-      where start_date = '$startDate' and end_date='$EndDate' and priority = $priority and status = '$status'" ;
+      $query=  "select title, description, start_date, end_date, priority, assigned_to,assigned_by, member.name as assignedToName  , m2.name assignedBYName , status 
+
+      from task join member_details member on (member.id = $MemberID) and (member.id = assigned_to) join member_details m2 on (m2.id = assigned_by)
+        where start_date = '$startDate' and end_date='$EndDate' and priority = $priority and status = '$status' {$sortBy} " ;
+  
     if ($conn ->connect_error) {
         // display an error message
         die ("error" . $conn->error) ;
@@ -393,9 +398,17 @@ else {
 return $count ;
 }
 
+public static function updateTheStatusByID ($title , $status) {
+  //include 'dp.php' ;
+
+ //$sql =  "update task set status = '$status' where title = '$title'; " ;
+  
+}
 
 
 }
+
+
 
 
 ?>
