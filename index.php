@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Task Managment System</title>
+    <head>
+  <link rel="stylesheet" type="text/css" href="CSS/login.css">
+</head>
 </head>
 <body>
     

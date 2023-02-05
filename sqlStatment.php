@@ -23,10 +23,10 @@ $stmt->bindParam(':nationality', $nationality);
 $stmt->bindParam(':address', $address);
 $stmt->bindParam(':phone', $phone);
 $stmt->bindParam(':email', $email);
-$stmt->bindParam(':photo', $imgContent, PDO::PARAM_LOB);
+$stmt->bindParam(':photo', $imgContent);
 $stmt->bindParam(':qua', $qua);
 $stmt->bindParam(':workExp', $workExp);
-$stmt->bindParam(':cv', $cvContent, PDO::PARAM_LOB);
+$stmt->bindParam(':cv', $cvContent);
 
 
 $stmt->execute();
@@ -122,7 +122,7 @@ mysqli_close($conn);
 public static function getMyDailyTasks () {
     include 'dp.php' ;
     $query = " select title , photo  , priority , assigned_by , status from task join member_details mb on (assigned_to = ". $_SESSION['member_id'] .")
-    and( assigned_to =  mb.id) " ;
+    and( assigned_to =  mb.id) where start_date =cast((now()) as date)   " ;
    
 
     if ($conn ->connect_error) {
@@ -312,6 +312,87 @@ public static function searchEngin ($startDate , $EndDate , $MemberID , $priorit
   }
   return $tasks ;
 }
+
+public static function countLateTasks () {
+  include 'dp.php' ;
+  $query = "select count(*) as count from task where assigned_to =".$_SESSION['member_id'] ." and status = 'Late'" ;
+
+  if ($conn ->connect_error) {
+      // display an error message
+      die ("error" . $conn->error) ;
+}
+else {
+    $result = mysqli_query ($conn , $query) ;
+
+    $count = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+     // $tasks[] = $row ;
+      $count = $row['count'] ;
+    }
+}
+return $count ;
+}
+public static function countPendingTasks () {
+  include 'dp.php' ;
+  $query = "select count(*) as count from task where assigned_to =".$_SESSION['member_id'] ." and status = 'Pending'" ;
+
+  if ($conn ->connect_error) {
+      // display an error message
+      die ("error" . $conn->error) ;
+}
+else {
+    $result = mysqli_query ($conn , $query) ;
+
+
+    $count = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+     // $tasks[] = $row ;
+      $count = $row['count'] ;
+    }
+}
+return $count ;
+}
+
+public static function countActiveTasks () {
+  include 'dp.php' ;
+  $query = "select count(*) as count from task where assigned_to =".$_SESSION['member_id'] ." and status = 'Active'" ;
+
+  if ($conn ->connect_error) {
+      // display an error message
+      die ("error" . $conn->error) ;
+}
+else {
+    $result = mysqli_query ($conn , $query) ;
+
+    $count = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+     // $tasks[] = $row ;
+      $count = $row['count'] ;
+    }
+}
+return $count ;
+}
+
+public static function countFinishedTasks () {
+  include 'dp.php' ;
+  $query = "select count(*) as count from task where assigned_to =".$_SESSION['member_id'] ." and status = 'Finished'" ;
+
+  if ($conn ->connect_error) {
+      // display an error message
+      die ("error" . $conn->error) ;
+}
+else {
+    $result = mysqli_query ($conn , $query) ;
+
+    $count = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+     // $tasks[] = $row ;
+      $count = $row['count'] ;
+    }
+}
+return $count ;
+}
+
 
 
 }

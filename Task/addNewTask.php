@@ -37,7 +37,7 @@
 
 <select name="assigned_to" id ="assigned_to" required>
   <?php
-    include ("../sqlStatment.php");
+//    include ("../sqlStatment.php");
     $members = SqlStatments::getMembers();
         foreach ($members as $member) {
             echo "<option value='" . $member['id'] . "'>" . $member['name'] . "</option>";

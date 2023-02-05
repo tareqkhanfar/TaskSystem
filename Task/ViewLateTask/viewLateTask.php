@@ -2,7 +2,7 @@
 <?php include './../../header.php';?>
 
  <?php 
-        include './../../sqlStatment.php';
+       // include './../../sqlStatment.php';
 
     echo "<table>";
     echo "<tr>   <th>Title</th>   <th>description</th>  <th>start_date</th>  <th>end_date</th>  <th>priority</th>  <th>assigned_to</th>  <th>assigned_by</th>  <th>Status</th>  </tr>";

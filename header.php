@@ -12,14 +12,18 @@
       <a href="http://localhost/Project/MainFunction/logout.php">Log Out</a>
     </div>
     <nav> 
-        <a href="http://localhost/Project/home.php">Home </a>
-        <a href="http://localhost/Project/Search/search.php">Search </a>
-        <a href="http://localhost/Project/Task/update/update_task.php">View submitted tasks </a>
-        <a href="http://localhost/Project/Task/addNewTask.php">Add New Task </a>
-        <a href="http://localhost/Project/Task/ViewLateTask/viewLateTask.php">view late tasks </a>
-        <a href="http://localhost/Project/Task/ViewPendingTask/viewPendingTask.php">view pending tasks </a>
-        <a href="http://localhost/Project/Task/ViewActiveTask/viewActiveTask.php">view Active tasks </a>
-        <a href="http://localhost/Project/Task/ViewFinishedTask/viewFinishedTask.php">view Finished tasks </a>
+    <?php include_once 'sqlStatment.php';?>
+
+    <a href="http://localhost/Project/home.php">Home </a>
+    <a href="http://localhost/Project/Search/search.php">Search </a>
+    <a href="http://localhost/Project/Task/update/update_task.php">View submitted tasks </a>
+    <a href="http://localhost/Project/Task/addNewTask.php">Add New Task </a>
+    <a href="http://localhost/Project/Task/ViewLateTask/viewLateTask.php"> late tasks <span class="badge"> <?php echo SqlStatments::countLateTasks(); ?> </span> </a>
+    <a href="http://localhost/Project/Task/ViewPendingTask/viewPendingTask.php"> pending tasks <span class="badge"> <?php echo SqlStatments::countPendingTasks(); ?> </span> </a>
+    <a href="http://localhost/Project/Task/ViewActiveTask/viewActiveTask.php"> Active tasks <span class="badge"> <?php echo SqlStatments::countActiveTasks(); ?> </span> </a>
+    <a href="http://localhost/Project/Task/ViewFinishedTask/viewFinishedTask.php"> Finished tasks <span class="badge"> <?php echo SqlStatments::countFinishedTasks(); ?> </span> </a>
+</nav>
+
     </nav>
 
     </header>

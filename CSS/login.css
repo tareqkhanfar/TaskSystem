@@ -1,5 +1,44 @@
-* {
-    margin: 0;
-    padding: 0;
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
     box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    }
+    input:focus {
+        background-color: #a03636;
+    }
+
+
+    [required] {
+        border: 2px solid red; /* Add a red border to required fields */
+    }
+    [required]:focus {
+        background-color: #ffc; /* Change the background color on focus */
+    }
+    
+
+    /* Change font properties for headers */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial', sans-serif; /* Change font family */
+    font-size: 1.5em; /* Change font size */
+    font-weight: bold; /* Change font weight */
+    color: #333; /* Change font color */
+}
+
+/* Change font properties for search result table */
+table {
+    font-family: 'Verdana', sans-serif; /* Change font family */
+    font-size: 0.9em; /* Change font size */
+    font-weight: normal; /* Change font weight */
+    color: #666; /* Change font color */
+}
+
+/* Change font properties for a specific class or id */
+.custom-class, #custom-id {
+    font-family: 'Georgia', serif; /* Change font family */
+    font-size: 1.2em; /* Change font size */
+    font-weight: bold; /* Change font weight */
+    color: #555; /* Change font color */
 }

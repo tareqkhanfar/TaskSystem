@@ -1,7 +1,7 @@
 <?php
 
 
-     $host ='localhost';
+     $host ='127.0.0.1';
       $userName ='root';
       $password ='1234' ;
       $nameDB ='tasksystem' ;

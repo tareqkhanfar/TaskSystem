@@ -1,60 +1,102 @@
-header {
+table {
+    border-collapse: collapse;
+    float: right;
+    width: 75%; /* adjust as needed */
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  input:focus {
+    background-color: #f2f2f2;
+}
+  
+  th {
+    background-color: #0a0e30;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  a {
+    color: rgb(255, 0, 0);
+    text-decoration: none;
+  }
+  header {
+    background-color: #3f51b5;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  #name {
+    margin-left: 20px;
+  }
+  
+  #header-links {
+    margin-right: 20px;
+    text-align: right;
+  }
+  
+  #header-links a {
+    color: white;
+    margin-left: 10px;
+  }
+  
+  nav {
     display: flex;
     align-items: center;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-}
-
-#name {
-    flex: 1;
-    text-align: center;
-}
-
-#header-links {
-    display: flex;
-    align-items: center;
-}
-
-#header-links a {
-    color: #fff;
+    margin-left: 20px;
+  }
+  
+  nav a {
+    color: white;
     margin-left: 10px;
     text-decoration: none;
+  }
+  
+  .badge {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 50%;
+    position: relative;
+    top: -3px;
+    right: -10px;
 }
 
-nav {
-    display: flex;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+.img-link:hover {
+  border: 2px solid #ff0000;
+  transition: all 0.5s ease;
 }
 
-nav a {
-    color: #fff;
-    margin-right: 10px;
-    text-decoration: none;
+[required] {
+  border: 2px solid red; /* Add a red border to required fields */
+}
+[required]:focus {
+  background-color: #ffc; /* Change the background color on focus */
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.user-info {
+  float: left;
+  width: 25%; /* adjust as needed */  background-color: #f2f2f2;
+  padding: 20px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+.user-info img {
+  border-radius: 50%;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
 
-th {
-    background-color: #ddd;
-}
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}

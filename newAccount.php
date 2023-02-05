@@ -2,6 +2,8 @@
 
 <?php
 ?>
+   <link rel = "stylesheet" href="CSS/newAccount.css" >
+
 <form action ="<?php echo $_SERVER ["PHP_SELF"] ;?>" method="POST" enctype="multipart/form-data">
 <legend>Create New Account</legend>
 <hr>
@@ -75,13 +77,22 @@ $qua = @$_POST ['qualification'] ;
 $nationality = @$_POST['nationality'] ;
 
 $image = $_FILES['photo']['tmp_name'];
-$imgContent = addslashes(file_get_contents($image));
+$Image_size = $_FILES['photo']['size'];
+$Image_name = $_FILES['photo']['name'];
+
+$cv_name =  $_FILES['cv']['name'];
+
+move_uploaded_file ($image , 'imageUsers/' . $Image_name) ;
 
 $cv = $_FILES['cv']['tmp_name'];
 $cvContent = addslashes(file_get_contents($cv));
 
+
+move_uploaded_file ($cv , 'CV/' . $cv_name) ;
+
+
 include 'sqlStatment.php';
-SqlStatments:: CreateNewMember(  $id , $name , $nationality,  $address , $email , $phone , $workExp , $qua , $imgContent , $cvContent) ;
+SqlStatments:: CreateNewMember(  $id , $name , $nationality,  $address , $email , $phone , $workExp , $qua , $Image_name , $cv_name) ;
 }
 
 
